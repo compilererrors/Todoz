@@ -10,4 +10,8 @@ class TodozApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void testPush(){
+
+	}
 }
