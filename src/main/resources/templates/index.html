@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <!-- Required meta tags -->
-    <metacharset="utf-8">
-    <metaname="viewport"content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name = "viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
-
-
-Lorem ipsum...
 
 <div class="container">
 
     <div class="row">
         <div class="col-12">
-            <h1>DEPARTURES</h1>
+            <h1>Todos</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-2">
+        <div class="col-2" th:text="${name}">
             Placeholder Date filter
         </div>
         <div class="col-3">
@@ -35,6 +33,11 @@ Lorem ipsum...
         <div class="col">
             Placeholder "Last updated no filter/input" filter
         </div>
+    </div>
+    <div>
+        <!--ul th:each="${item: list}">
+            <li th:text="${item}"></li>
+        </ul-->
     </div>
 
     <div class="row">
