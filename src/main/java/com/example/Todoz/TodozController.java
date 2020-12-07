@@ -24,6 +24,7 @@ public class TodozController {
     public String getTodos(Model model, @RequestParam(value = "url", required = false, defaultValue = "1") String url) throws IOException, JSONException {
         String urlen = "https://best-todolist.azurewebsites.net/todos";
         List<String> list = new ArrayList<>();
+        String htmlList = "";
         try {
             JSONArray json = readJsonFromUrl(urlen);
             for (int i = 0; i < json.length(); i++) {
@@ -35,6 +36,7 @@ public class TodozController {
 
                 for (int j = 0; j < tmp.length; j++) {
                     System.out.println(tmp[j]);
+                    htmlList += tmp[j];
                 }
 
             }
@@ -42,7 +44,7 @@ public class TodozController {
             System.out.println("Exception: " + e);
         }
         model.addAttribute("url", url);
-        model.addAttribute("list", list);
+        model.addAttribute("list", htmlList);
 
         System.out.println("List length: " + list.size());
         System.out.println("A list item: " + list.get(0));
