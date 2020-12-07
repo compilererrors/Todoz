@@ -49,6 +49,7 @@ public class TodozController {
         model.addAttribute("url", url);
         model.addAttribute("htmlString", htmlList);
         model.addAttribute("mymap", map);
+        model.addAttribute("list", list);
 
         System.out.println("List length: " + list.size());
         System.out.println("A list item: " + list.get(0));
