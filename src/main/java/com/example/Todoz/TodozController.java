@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class TodozController {
@@ -24,7 +22,9 @@ public class TodozController {
     public String getTodos(Model model, @RequestParam(value = "url", required = false, defaultValue = "1") String url) throws IOException, JSONException {
         String urlen = "https://best-todolist.azurewebsites.net/todos";
         List<String> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
         String htmlList = "";
+        String[] colonSplit;
         try {
             JSONArray json = readJsonFromUrl(urlen);
             for (int i = 0; i < json.length(); i++) {
@@ -35,16 +35,20 @@ public class TodozController {
                 String[] tmp = list.get(i).split(",");
 
                 for (int j = 0; j < tmp.length; j++) {
+                    colonSplit = tmp[j].split(":");
+                    map.put(colonSplit[0], colonSplit[1]);
                     System.out.println(tmp[j]);
                     htmlList += tmp[j];
                 }
 
             }
+
         } catch (IOException e) {
             System.out.println("Exception: " + e);
         }
         model.addAttribute("url", url);
-        model.addAttribute("list", htmlList);
+        model.addAttribute("htmlString", htmlList);
+        model.addAttribute("mymap", map);
 
         System.out.println("List length: " + list.size());
         System.out.println("A list item: " + list.get(0));
